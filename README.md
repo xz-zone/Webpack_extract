@@ -1,4 +1,4 @@
-# Webpack_extract-自动化收集js，自动化加载js
+# Webpack_extract-自动化收集js，自动化加载js，自动化分析js
 
 郑重声明：文中所涉及的技术、思路和工具仅供以安全为目的的学习交流使用，任何人不得将其用于非法用途以及盈利等目的，否则后果自行承担。
 
@@ -10,11 +10,14 @@
 
 ![logo](img/logo.png)
 
-定位：协助红队人员快速的信息收集，一键自动加载js。
+定位：协助红队人员快速的信息收集，一键自动加载js，一键自动化分析js。
 
 语言：JS开发
 
-功能：一条龙服务，有发现存在Webpack需要读取的js文件，点击提取映射并且可以获取映射js文件，并且支持一键自动加载js。
+功能：一条龙服务，有发现存在Webpack需要读取的js文件，点击提取映射并且可以获取映射js文件，并且支持一键自动加载js、一键分析js。
+
+调用：
+脚本借用了HaE内容提取脚本，感谢gh0stkey作者。
 
 支持环境：Chrome。
 
@@ -42,6 +45,11 @@
 
 ![three](img/three.png)
 
+点击一键分析
+
+![three](img/four.png)
+
+
 ## 0x04 版本更新
 
 2025-09-01 初始版本提交。
@@ -51,6 +59,39 @@
 2025-09-17 解决CORS跨域问题、不可信任https网站，优化兼容性。
 
 2025-09-20 优化兼容性。
+
+2025-09-25 增加一键分析功能。
+```
+Hae规则转换js
+npm init -y
+npm install js-yaml fs
+
+
+转换代码实例 transformation.js
+const yaml = require('js-yaml');
+const fs = require('fs');
+try {
+	// config.yml 是你的Hae规则，config.js 是程序加载规则js
+	const yamlContent = fs.readFileSync('config.yml', 'utf8');
+	const jsObject = yaml.load(yamlContent);
+	const jsContent = `const config = ${JSON.stringify(jsObject, null, 2)};
+if (typeof module !== 'undefined' && module.exports) {
+	module.exports = config;
+} else {
+    window.scanRules = config;
+}`;
+	fs.writeFileSync('Rules.js', jsContent);
+	console.log('YAML 文件已成功转换为 JS 文件');
+} catch (e) {
+	console.error('转换失败:', e);
+}
+
+运行
+node transformation.js
+```
+
+2025-09-26 优化兼容性。
+
 
 ## 0x05 反馈
 
@@ -67,6 +108,3 @@ Webpack_extract 是一个免费且开源的项目，我们欢迎任何人为其�
 ## Stargazers over time
 
 [![Stargazers over time](https://starchart.cc/xz-zone/Webpack_extract.svg)](https://starchart.cc/xz-zone/Webpack_extract)
-
-
-<img align='right' src="https://profile-counter.glitch.me/Webpack_extract/count.svg" width="200">
