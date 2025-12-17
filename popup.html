@@ -38,6 +38,13 @@
       cursor: pointer;
       font-weight: 600;
       transition: all 0.2s;
+
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      line-height: 1;
     }
     #extractBtn {
       background-color: #4CAF50;
@@ -66,6 +73,13 @@
     }
     #analyzeDownloadBtn:hover {
       background-color: #7B1FA2;
+    }
+    #downloadBtn {
+      background-color: #607D8B;
+      color: white;
+    }
+    #downloadBtn:hover {
+      background-color: #546E7A;
     }
     button:disabled {
       background-color: #cccccc;
@@ -174,6 +188,7 @@
     <button id="copyBtn" disabled>一键复制</button>
     <button id="loadBtn" disabled>一键加载</button>
     <button id="analyzeDownloadBtn" disabled>一键分析</button>
+    <button id="downloadBtn" disabled>一键下载</button>
   </div>
   
   <div class="progress-container" id="progressContainer">
