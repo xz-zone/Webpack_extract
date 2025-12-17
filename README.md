@@ -49,6 +49,10 @@
 
 ![three](img/four.png)
 
+点击一键下载
+
+![three](img/five.png)
+
 
 ## 0x04 版本更新
 
