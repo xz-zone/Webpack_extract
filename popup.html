@@ -191,6 +191,25 @@
     <button id="downloadBtn" disabled>一键下载</button>
   </div>
   
+  <div class="button-container" style="margin-top: 10px;">
+    <button id="importRulesBtn" style="background-color: #2196F3;">导入规则</button>
+    <button id="exportRulesBtn" style="background-color: #FF9800;">导出自定义规则</button>
+    <button id="exportDefaultRulesBtn" style="background-color: #4CAF50;">导出默认规则</button>
+    <button id="resetRulesBtn" style="background-color: #9E9E9E;">重置规则</button>
+  </div>
+  
+  <div style="margin-top: 10px; padding: 10px; background-color: #f0f0f0; border-radius: 4px; font-size: 12px;">
+    <label style="display: flex; align-items: center; cursor: pointer; margin-bottom: 8px;">
+      <input type="checkbox" id="replaceModeCheckbox" style="margin-right: 6px;">
+      <span>替换模式（勾选后导入的规则将完全替换默认规则，不勾选则与默认规则合并）</span>
+    </label>
+    <div style="font-size: 11px; color: #666; margin-top: 5px;">
+      💾 导入规则后会自动备份到下载目录，确保永久保存
+    </div>
+  </div>
+  
+  <input type="file" id="rulesFileInput" accept=".json,.js" style="display: none;">
+  
   <div class="progress-container" id="progressContainer">
     <div class="progress-bar">
       <div class="progress-fill" id="progressFill"></div>
