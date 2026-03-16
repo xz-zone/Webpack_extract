@@ -41,9 +41,11 @@
 
 ![two](img/two.png)
 
-点击一键加载
+点击一键加载，自动加载到Sources目录
 
 ![three](img/three.png)
+
+![six](img/six.png)
 
 点击一键分析
 
@@ -103,6 +105,8 @@ node transformation.js
 2026-01-15 增加 外部导入规则功能。
 
 2026-02-15 增加 浏览器Sources可看到js文件 功能、优化一键打包js功能。
+
+![six](img/six.png)
 
 ## 0x05 反馈
 
