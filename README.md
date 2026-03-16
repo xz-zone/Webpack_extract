@@ -35,25 +35,25 @@
 
 点击提取映射
 
-![one](img/one.png)
+![one](img/one1.png)
 
 点击一键复制
 
-![two](img/two.png)
+![two](img/two2.png)
 
 点击一键加载，自动加载到Sources目录
 
-![three](img/three.png)
+![three](img/three3.png)
 
-![six](img/six.png)
+![six](img/six6.png)
 
 点击一键分析
 
-![three](img/four.png)
+![three](img/four4.png)
 
 点击一键下载
 
-![three](img/five.png)
+![three](img/five5.png)
 
 
 ## 0x04 版本更新
@@ -106,7 +106,7 @@ node transformation.js
 
 2026-02-15 增加 浏览器Sources可看到js文件 功能、优化一键打包js功能。
 
-![six](img/six.png)
+![six](img/six6.png)
 
 ## 0x05 反馈
 
