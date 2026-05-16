@@ -55,6 +55,10 @@
 
 ![three](img/five5.png)
 
+点击JS分包下载
+
+![three](img/seven7.png)
+
 
 ## 0x04 版本更新
 
@@ -106,7 +110,10 @@ node transformation.js
 
 2026-02-15 增加 浏览器Sources可看到js文件 功能、优化一键打包js功能。
 
-![six](img/six6.png)
+2026-02-16 优化兼容性。
+
+2026-05-16 优化兼容性、增加 JS分包下载 功能。
+
 
 ## 0x05 反馈
 

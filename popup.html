@@ -8,6 +8,10 @@
       padding: 15px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f9f9f9;
+      box-sizing: border-box;
+    }
+    .hidden {
+      display: none;
     }
     .header {
       text-align: center;
@@ -81,6 +85,13 @@
     #downloadBtn:hover {
       background-color: #546E7A;
     }
+    #chunkDownloadNavBtn {
+      background-color: #3f5cff;
+      color: white;
+    }
+    #chunkDownloadNavBtn:hover {
+      background-color: #2747f0;
+    }
     button:disabled {
       background-color: #cccccc;
       cursor: not-allowed;
@@ -93,6 +104,20 @@
       border-radius: 4px;
       padding: 10px;
       background-color: #fff;
+    }
+    .results::-webkit-scrollbar {
+      width: 8px;
+    }
+    .results::-webkit-scrollbar-track {
+      background: #f3f3f3;
+      border-radius: 8px;
+    }
+    .results::-webkit-scrollbar-thumb {
+      background: #c2c2c2;
+      border-radius: 8px;
+    }
+    .results::-webkit-scrollbar-thumb:hover {
+      background: #a8a8a8;
     }
     .result-item {
       padding: 5px;
@@ -175,6 +200,125 @@
     .progress-status.error {
       color: #F44336;
     }
+    #chunkView {
+      padding-top: 2px;
+    }
+    .subview-header {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .subview-header > div {
+      flex: 1;
+      min-width: 0;
+    }
+    .subview-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 4px;
+    }
+    #backToMainBtn {
+      flex: 0 0 auto;
+      background-color: #795548;
+      color: white;
+      padding: 0 14px;
+      min-width: 72px;
+      height: 36px;
+    }
+    #backToMainBtn:hover {
+      background-color: #6D4C41;
+    }
+    .chunk-note {
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #666;
+      line-height: 1.5;
+    }
+    .chunk-card {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #fff;
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+    .chunk-form-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .field-group {
+      margin-bottom: 0;
+    }
+    .field-group:last-child {
+      margin-bottom: 0;
+    }
+    .field-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 6px;
+    }
+    .text-input {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 10px 12px;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background-color: #fff;
+    }
+    .text-input:focus {
+      border-color: #795548;
+      box-shadow: 0 0 0 3px rgba(121, 85, 72, 0.12);
+    }
+    .field-hint {
+      margin-top: 6px;
+      font-size: 11px;
+      line-height: 1.4;
+      color: #777;
+    }
+    .chunk-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #eee;
+    }
+    #chunkStartDownloadBtn {
+      background-color: #4CAF50;
+      color: white;
+      flex: 0 0 150px;
+      max-width: 180px;
+    }
+    #chunkStartDownloadBtn:hover {
+      background-color: #45a049;
+    }
+    #chunkProgressContainer {
+      margin-top: 0;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #fff;
+    }
+    #chunkResultsContainer {
+      margin-top: 0;
+      max-height: 250px;
+      scrollbar-width: thin;
+      scrollbar-color: #c2c2c2 #f3f3f3;
+    }
+    #chunkStatusMessage {
+      margin-top: 8px;
+    }
   </style>
 </head>
 <body>
@@ -182,48 +326,101 @@
     <h1>横戈安全团队，Webpack映射提取器</h1>
     <p class="description">提取Webpack生成的JS映射文件</p>
   </div>
-  
-  <div class="button-container">
-    <button id="extractBtn">提取映射</button>
-    <button id="copyBtn" disabled>一键复制</button>
-    <button id="loadBtn" disabled>一键加载</button>
-    <button id="analyzeDownloadBtn" disabled>一键分析</button>
-    <button id="downloadBtn" disabled>一键下载</button>
-  </div>
-  
-  <div class="button-container" style="margin-top: 10px;">
-    <button id="importRulesBtn" style="background-color: #2196F3;">导入规则</button>
-    <button id="exportRulesBtn" style="background-color: #FF9800;">导出自定义规则</button>
-    <button id="exportDefaultRulesBtn" style="background-color: #4CAF50;">导出默认规则</button>
-    <button id="resetRulesBtn" style="background-color: #9E9E9E;">重置规则</button>
-  </div>
-  
-  <div style="margin-top: 10px; padding: 10px; background-color: #f0f0f0; border-radius: 4px; font-size: 12px;">
-    <label style="display: flex; align-items: center; cursor: pointer; margin-bottom: 8px;">
-      <input type="checkbox" id="replaceModeCheckbox" style="margin-right: 6px;">
-      <span>替换模式（勾选后导入的规则将完全替换默认规则，不勾选则与默认规则合并）</span>
-    </label>
-    <div style="font-size: 11px; color: #666; margin-top: 5px;">
-      💾 导入规则后会自动备份到下载目录，确保永久保存
+
+  <div id="mainView">
+    <div class="button-container">
+      <button id="extractBtn">提取映射</button>
+      <button id="copyBtn" disabled>一键复制</button>
+      <button id="loadBtn" disabled>一键加载</button>
+      <button id="analyzeDownloadBtn" disabled>一键分析</button>
+      <button id="downloadBtn" disabled>一键下载</button>
     </div>
-  </div>
-  
-  <input type="file" id="rulesFileInput" accept=".json,.js" style="display: none;">
-  
-  <div class="progress-container" id="progressContainer">
-    <div class="progress-bar">
-      <div class="progress-fill" id="progressFill"></div>
+
+    <div class="button-container" style="margin-top: -5px;">
+      <button id="chunkDownloadNavBtn">JS分包下载</button>
     </div>
-    <div class="progress-text" id="progressText">0% (0/0)</div>
-    <div class="progress-url" id="progressUrl"></div>
-    <div class="progress-status" id="progressStatus"></div>
+    
+    <div class="button-container" style="margin-top: 10px;">
+      <button id="importRulesBtn" style="background-color: #2196F3;">导入规则</button>
+      <button id="exportRulesBtn" style="background-color: #FF9800;">导出自定义规则</button>
+      <button id="exportDefaultRulesBtn" style="background-color: #4CAF50;">导出默认规则</button>
+      <button id="resetRulesBtn" style="background-color: #9E9E9E;">重置规则</button>
+    </div>
+    
+    <div style="margin-top: 10px; padding: 10px; background-color: #f0f0f0; border-radius: 4px; font-size: 12px;">
+      <label style="display: flex; align-items: center; cursor: pointer; margin-bottom: 8px;">
+        <input type="checkbox" id="replaceModeCheckbox" style="margin-right: 6px;">
+        <span>替换模式（勾选后导入的规则将完全替换默认规则，不勾选则与默认规则合并）</span>
+      </label>
+      <div style="font-size: 11px; color: #666; margin-top: 5px;">
+        💾 导入规则后会自动备份到下载目录，确保永久保存
+      </div>
+    </div>
+    
+    <input type="file" id="rulesFileInput" accept=".json,.js" style="display: none;">
+    
+    <div class="progress-container" id="progressContainer">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-text" id="progressText">0% (0/0)</div>
+      <div class="progress-url" id="progressUrl"></div>
+      <div class="progress-status" id="progressStatus"></div>
+    </div>
+    
+    <div class="results" id="resultsContainer">
+      <div class="result-item">点击"提取映射"按钮开始...</div>
+    </div>
+    
+    <div id="statusMessage" class="status"></div>
   </div>
-  
-  <div class="results" id="resultsContainer">
-    <div class="result-item">点击"提取映射"按钮开始...</div>
+
+  <div id="chunkView" class="hidden">
+    <div class="subview-header">
+      <button id="backToMainBtn">返回</button>
+      <div>
+        <div class="subview-title">JS分包下载</div>
+        <div class="description" style="margin: 0;">入口 JS 地址 + 基础路径，直接在当前弹窗里解析并打包下载。</div>
+      </div>
+    </div>
+
+    <div class="chunk-note">
+      解析结果会优先尝试 runtime / manifest 映射；结果区会显示分包地址，下载失败时会保留失败原因。
+    </div>
+
+    <div class="chunk-card">
+      <div class="chunk-form-grid">
+        <div class="field-group">
+          <label for="chunkEntryJsUrl">入口js地址：</label>
+          <input id="chunkEntryJsUrl" class="text-input" type="url" placeholder="https://example.com/static/js/app.xxx.js">
+          <div class="field-hint">填写实际入口脚本 URL，例如主 bundle、runtime、fd-messaging 等入口文件。</div>
+        </div>
+
+        <div class="field-group">
+          <label for="chunkBasePath">基础路径(必填)：</label>
+          <input id="chunkBasePath" class="text-input" type="text" placeholder="https://example.com/static/js/">
+          <div class="field-hint">通常是 chunk 文件所在目录，建议带完整协议、域名和结尾斜杠。</div>
+        </div>
+      </div>
+
+      <div class="chunk-actions">
+        <button id="chunkStartDownloadBtn">开始下载</button>
+      </div>
+    </div>
+
+    <div class="progress-container" id="chunkProgressContainer">
+      <div class="progress-bar">
+        <div class="progress-fill" id="chunkProgressFill"></div>
+      </div>
+      <div class="progress-text" id="chunkProgressText">0% (0/0)</div>
+    </div>
+
+    <div class="results" id="chunkResultsContainer">
+      <div class="result-item">填写参数后点击"开始下载"...</div>
+    </div>
+
+    <div id="chunkStatusMessage" class="status"></div>
   </div>
-  
-  <div id="statusMessage" class="status"></div>
 
   <script src="popup.js"></script>
 </body>
