@@ -31,7 +31,7 @@
     }
     .button-container {
       display: flex;
-      gap: 10px;
+      gap: 5px;
       margin-bottom: 15px;
     }
     button {
@@ -203,6 +203,17 @@
     #chunkView {
       padding-top: 2px;
     }
+    #backToMainFromAiBtn {
+      flex: 0 0 auto;
+      background-color: #795548;
+      color: white;
+      padding: 0 14px;
+      min-width: 72px;
+      height: 36px;
+    }
+    #backToMainFromAiBtn:hover {
+      background-color: #6D4C41;
+    }
     .subview-header {
       display: flex;
       gap: 12px;
@@ -274,10 +285,17 @@
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
       background-color: #fff;
+      color: #333;
     }
     .text-input:focus {
       border-color: #795548;
       box-shadow: 0 0 0 3px rgba(121, 85, 72, 0.12);
+    }
+    .text-area-input {
+      min-height: 96px;
+      resize: vertical;
+      font-family: Consolas, "Courier New", monospace;
+      line-height: 1.45;
     }
     .field-hint {
       margin-top: 6px;
@@ -319,6 +337,182 @@
     #chunkStatusMessage {
       margin-top: 8px;
     }
+    #aiAnalyzeNavBtn {
+      background-color: #9C27B0;
+      color: white;
+    }
+    #aiAnalyzeNavBtn:hover {
+      background-color: #7B1FA2;
+    }
+    #aiView {
+      padding-top: 2px;
+    }
+    .settings-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .split-field-row {
+      display: flex;
+      gap: 12px;
+    }
+    .split-field-row .field-group {
+      flex: 1;
+      min-width: 0;
+    }
+    .ai-note {
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 4px;
+      font-size: 12px;
+      color: #666;
+      line-height: 1.5;
+    }
+    .ai-note_href:hover {
+      text-decoration: underline;
+    }
+    .ai-note_href {
+      color: #2196F3;
+      text-decoration: none;
+    }
+    .settings-toggle {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #fff;
+      padding: 10px 12px;
+      cursor: pointer;
+      font-size: 13px;
+      color: #333;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    .settings-toggle strong {
+      font-size: 14px;
+      color: #333;
+    }
+    .settings-toggle:hover {
+      border-color: #cfcfcf;
+      background-color: #fafafa;
+    }
+    .settings-toggle-arrow {
+      font-size: 16px;
+      color: #666;
+      transition: transform 0.2s ease;
+      flex: 0 0 auto;
+    }
+    .settings-toggle.expanded .settings-toggle-arrow {
+      transform: rotate(180deg);
+    }
+    .collapsed {
+      display: none;
+    }
+    .ai-actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #eee;
+    }
+    #aiSaveConfigBtn {
+      background-color: #2196F3;
+      color: white;
+      flex: 0 0 120px;
+    }
+    #aiSaveConfigBtn:hover {
+      background-color: #0b7dda;
+    }
+    #aiStartAnalyzeBtn {
+      background-color: #4CAF50;
+      color: white;
+      flex: 0 0 150px;
+    }
+    #aiStartAnalyzeBtn:hover {
+      background-color: #45a049;
+    }
+    #aiCopyResultBtn {
+      background-color: #FF9800;
+      color: white;
+      flex: 0 0 120px;
+    }
+    #aiCopyResultBtn:hover {
+      background-color: #e68a00;
+    }
+    #aiProgressContainer {
+      margin-top: 0;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #fff;
+    }
+    #aiResultsContainer {
+      margin-top: 0;
+      max-height: 340px;
+      line-height: 1.5;
+    }
+    .ai-result-meta {
+      font-size: 11px;
+      color: #666;
+      background: #f7f7f7;
+      border-bottom: 1px solid #eee;
+    }
+    .ai-result-content {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 12px;
+      color: #222;
+      white-space: pre-wrap;
+      line-height: 1.65;
+    }
+    .ai-chat-card {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: #fff;
+      padding: 14px;
+      margin-top: 10px;
+    }
+    .ai-chat-card.hidden {
+      display: none;
+    }
+    .ai-chat-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 6px;
+    }
+    .ai-chat-hint {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .ai-chat-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    #aiFollowupBtn {
+      background-color: #9C27B0;
+      color: white;
+      flex: 0 0 120px;
+    }
+    #aiFollowupBtn:hover {
+      background-color: #7B1FA2;
+    }
+    #aiClearChatBtn {
+      background-color: #9E9E9E;
+      color: white;
+      flex: 0 0 120px;
+    }
+    #aiClearChatBtn:hover {
+      background-color: #8a8a8a;
+    }
   </style>
 </head>
 <body>
@@ -338,13 +532,14 @@
 
     <div class="button-container" style="margin-top: -5px;">
       <button id="chunkDownloadNavBtn">JS分包下载</button>
+      <button id="aiAnalyzeNavBtn">AI分析JS</button>
     </div>
     
     <div class="button-container" style="margin-top: 10px;">
-      <button id="importRulesBtn" style="background-color: #2196F3;">导入规则</button>
-      <button id="exportRulesBtn" style="background-color: #FF9800;">导出自定义规则</button>
-      <button id="exportDefaultRulesBtn" style="background-color: #4CAF50;">导出默认规则</button>
-      <button id="resetRulesBtn" style="background-color: #9E9E9E;">重置规则</button>
+      <button id="importRulesBtn" style="background-color: #2196F3; color: white;">导入规则</button>
+      <button id="exportRulesBtn" style="background-color: #FF9800; color: white;">导出自定义规则</button>
+      <button id="exportDefaultRulesBtn" style="background-color: #4CAF50; color: white;">导出默认规则</button>
+      <button id="resetRulesBtn" style="background-color: #9E9E9E; color: white;">重置规则</button>
     </div>
     
     <div style="margin-top: 10px; padding: 10px; background-color: #f0f0f0; border-radius: 4px; font-size: 12px;">
@@ -420,6 +615,146 @@
     </div>
 
     <div id="chunkStatusMessage" class="status"></div>
+  </div>
+
+  <div id="aiView" class="hidden">
+    <div class="subview-header">
+      <button id="backToMainFromAiBtn">返回</button>
+      <div>
+        <div class="subview-title">AI分析JS</div>
+        <div class="description" style="margin: 0;">对当前页面 JS 做接口、参数、鉴权与调试线索分析。</div>
+      </div>
+    </div>
+
+    <div class="ai-note">
+      仅会把本次抽样到的 JS 片段发送到你填写的接口地址，不会替换现有“规则分析”能力。
+      <div style="margin-top: 8px;">
+        <h1><a href="https://santaa.ai/register?aff=Z666" class="ai-note_href">santaa.ai 专属中转站</a></h1>
+      </div>
+    </div>
+
+    <button id="aiSettingsToggle" class="settings-toggle expanded" type="button">
+      <span>
+        <strong>AI 设置</strong><br>
+        <span id="aiSettingsSummary">点击展开或收起接口、模型和提示词配置</span>
+      </span>
+      <span class="settings-toggle-arrow">▾</span>
+    </button>
+
+    <div class="chunk-card" id="aiSettingsCard">
+      <div class="settings-grid" id="aiSettingsGrid">
+        <div class="field-group">
+          <label for="aiProviderPreset">服务商预设：</label>
+          <select id="aiProviderPreset" class="text-input">
+            <option value="custom">自定义</option>
+            <option value="openai">OpenAI</option>
+            <option value="deepseek">DeepSeek</option>
+            <option value="sub2api">santaa.ai</option>
+            <option value="doubao">豆包</option>
+          </select>
+          <div class="field-hint" id="aiProviderHint">选择预设后会自动填充推荐接口地址和协议，仍可继续手动修改。</div>
+        </div>
+
+        <div class="split-field-row">
+          <div class="field-group">
+            <label for="aiApiStyle">接口协议：</label>
+            <select id="aiApiStyle" class="text-input">
+              <option value="chat_completions">Chat Completions</option>
+              <option value="responses">Responses</option>
+            </select>
+            <div class="field-hint">多数中转站用 Chat Completions，`santaa.ai` 这类网关更适合 Responses。</div>
+          </div>
+
+          <div class="field-group">
+            <label for="aiModelPreset">模型选择：</label>
+            <select id="aiModelPreset" class="text-input">
+              <option value="">请选择模型</option>
+            </select>
+            <div class="field-hint" id="aiModelHint">会根据上方服务商预设切换推荐模型，列表没有时可选“自定义模型”。</div>
+            <input id="aiCustomModel" class="text-input" type="text" placeholder="选中“自定义模型”后在这里填写模型 ID" style="margin-top: 8px; display: none;">
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="aiApiUrl">接口地址：</label>
+          <input id="aiApiUrl" class="text-input" type="url" placeholder="https://api.openai.com/v1/chat/completions">
+          <div class="field-hint">支持官方地址或中转站地址，常见格式是 `/v1/chat/completions`。</div>
+        </div>
+
+        <div class="split-field-row">
+          <div class="field-group">
+            <label for="aiApiKey">API Key：</label>
+            <input id="aiApiKey" class="text-input" type="password" placeholder="sk-...">
+            <div class="field-hint">保存在浏览器扩展本地存储中，仅本机可见。</div>
+          </div>
+        </div>
+
+        <div class="split-field-row">
+          <div class="field-group">
+            <label for="aiMaxScripts">抽样脚本数：</label>
+            <input id="aiMaxScripts" class="text-input" type="number" min="1" value="3">
+            <div class="field-hint">建议 2-5，过大会明显增加 token 成本。</div>
+          </div>
+
+          <div class="field-group">
+            <label for="aiMaxChars">单脚本最大字符数：</label>
+            <input id="aiMaxChars" class="text-input" type="number" min="1000" max="20000" value="6000">
+            <div class="field-hint">脚本会自动截断并优先保留关键片段。</div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="aiCustomPrompt">自定义提示词：</label>
+          <textarea id="aiCustomPrompt" class="text-input text-area-input" placeholder="例如：重点关注鉴权逻辑、接口签名、混淆还原线索、可能的 flag 入口"></textarea>
+          <div class="field-hint">留空则使用默认提示词。</div>
+        </div>
+
+        <div class="field-group">
+          <label for="aiCustomHeaders">自定义请求头（JSON，可选）：</label>
+          <textarea id="aiCustomHeaders" class="text-input text-area-input" placeholder='例如：{"x-api-key":"xxx","anthropic-version":"2023-06-01"}'></textarea>
+          <div class="field-hint">用于兼容需要额外 Header 的中转站；必须填写合法 JSON 对象。</div>
+        </div>
+
+        <div class="field-group">
+          <label for="aiExtraBody">额外请求体参数（JSON，可选）：</label>
+          <textarea id="aiExtraBody" class="text-input text-area-input" placeholder='例如：{"max_tokens":2000,"top_p":0.9,"provider":{"sort":"price"}}'></textarea>
+          <div class="field-hint">会合并到请求体顶层，适合补充中转站特有参数。</div>
+        </div>
+      </div>
+
+      <div class="ai-actions">
+        <button id="aiSaveConfigBtn">保存配置</button>
+      </div>
+    </div>
+
+    <div class="ai-actions" style="margin-top: 10px;margin-bottom: 10px;">
+      <button id="aiStartAnalyzeBtn" style="flex: 0 0 150px;">开始AI分析</button>
+      <button id="aiCopyResultBtn" disabled style="flex: 0 0 120px;">复制结果</button>
+    </div>
+
+    <div class="progress-container" id="aiProgressContainer">
+      <div class="progress-bar">
+        <div class="progress-fill" id="aiProgressFill"></div>
+      </div>
+      <div class="progress-text" id="aiProgressText">0% (0/0)</div>
+      <div class="progress-url" id="aiProgressUrl"></div>
+    </div>
+
+    <div class="results" id="aiResultsContainer">
+      <div class="result-item">填写接口配置后点击“开始AI分析”...</div>
+    </div>
+
+    <div class="ai-chat-card hidden" id="aiChatCard">
+      <div class="ai-chat-title">继续对话</div>
+      <div class="ai-chat-hint">可以基于本次 JS 分析结果继续追问，例如“把所有接口按表格整理”“只看鉴权逻辑”“继续找隐藏路由”。</div>
+      <textarea id="aiFollowupInput" class="text-input text-area-input" placeholder="输入你想继续追问 AI 的内容"></textarea>
+      <div class="ai-chat-actions">
+        <button id="aiClearChatBtn">清空上下文</button>
+        <button id="aiFollowupBtn">继续提问</button>
+      </div>
+    </div>
+
+    <div id="aiStatusMessage" class="status"></div>
   </div>
 
   <script src="popup.js"></script>

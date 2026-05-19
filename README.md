@@ -49,16 +49,19 @@
 
 点击一键分析
 
-![three](img/four4.png)
+![tfoure](img/four4.png)
 
 点击一键下载
 
-![three](img/five5.png)
+![tfive](img/five5.png)
 
 点击JS分包下载
 
-![three](img/seven7.png)
+![tsevene](img/seven7.png)
 
+点击AI分析JS
+
+![eighty](img/eighty8.png)
 
 ## 0x04 版本更新
 
@@ -115,6 +118,8 @@ node transformation.js
 2026-05-16 优化兼容性、增加 JS分包下载 功能。
 
 2026-05-18 优化兼容性。
+
+2026-05-19 增加 AI分析JS 功能。
 
 ## 0x05 反馈
 
