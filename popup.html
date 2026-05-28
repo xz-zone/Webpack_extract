@@ -19,15 +19,107 @@
       padding-bottom: 10px;
       border-bottom: 1px solid #e0e0e0;
     }
+    .title-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
     h1 {
       font-size: 18px;
       color: #333;
       margin: 0;
     }
+    .update-indicator {
+      display: none;
+      flex: 0 0 24px;
+      min-width: 24px;
+      width: 24px;
+      height: 24px;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #90a4ae, #607d8b);
+      color: white;
+      padding: 0;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 14px rgba(96, 125, 139, 0.18);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .update-indicator.visible {
+      display: inline-flex;
+    }
+    .update-indicator[data-state="checking"] {
+      background: linear-gradient(135deg, #42a5f5, #1e88e5);
+      box-shadow: 0 6px 14px rgba(30, 136, 229, 0.2);
+    }
+    .update-indicator[data-state="latest"] {
+      background: linear-gradient(135deg, #90a4ae, #607d8b);
+      box-shadow: 0 6px 14px rgba(96, 125, 139, 0.18);
+    }
+    .update-indicator[data-state="update"] {
+      background: linear-gradient(135deg, #ff9800, #f44336);
+      box-shadow: 0 6px 14px rgba(244, 67, 54, 0.25);
+      animation: updatePulse 1.8s ease-in-out infinite;
+    }
+    .update-indicator[data-state="error"] {
+      background: linear-gradient(135deg, #b0bec5, #78909c);
+      box-shadow: 0 6px 14px rgba(120, 144, 156, 0.18);
+    }
+    .update-indicator:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(51, 71, 86, 0.24);
+    }
+    .update-indicator svg {
+      width: 14px;
+      height: 14px;
+      display: block;
+    }
+    @keyframes updatePulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 6px 14px rgba(244, 67, 54, 0.25);
+      }
+      50% {
+        transform: scale(1.08);
+        box-shadow: 0 10px 20px rgba(244, 67, 54, 0.34);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 6px 14px rgba(244, 67, 54, 0.25);
+      }
+    }
     .description {
       font-size: 13px;
       color: #666;
       margin: 8px 0;
+    }
+    .version-hint {
+      display: block;
+      margin-top: 6px;
+      color: #607d8b;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .version-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 6px;
+    }
+    .version-hint[data-state="checking"] {
+      color: #1e88e5;
+    }
+    .version-hint[data-state="latest"] {
+      color: #607d8b;
+    }
+    .version-hint[data-state="update"] {
+      color: #d84315;
+    }
+    .version-hint[data-state="error"] {
+      color: #8d6e63;
     }
     .button-container {
       display: flex;
@@ -517,8 +609,18 @@
 </head>
 <body>
   <div class="header">
-    <h1>横戈安全团队，Webpack映射提取器</h1>
+    <div class="title-row">
+      <h1>横戈安全团队，Webpack映射提取器</h1>
+    </div>
     <p class="description">提取Webpack生成的JS映射文件</p>
+    <div class="version-row">
+      <div id="versionHint" class="version-hint"></div>
+      <button id="updateIndicatorBtn" class="update-indicator" type="button" title="发现新版本，点击打开 GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v8.59l2.3-2.29a1 1 0 1 1 1.4 1.41l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.41L11 12.59V4a1 1 0 0 1 1-1Zm-7 14a1 1 0 0 1 1 1v1h12v-1a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1Z"/>
+        </svg>
+      </button>
+    </div>
   </div>
 
   <div id="mainView">
